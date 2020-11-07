@@ -7,7 +7,7 @@ resource "random_id" "server" {
 }
 
 variable "EnvironmentResourceGroupName" {
-  type = "string"
+  type = string
 }
  
 data "azurerm_resource_group" "test" {
@@ -36,13 +36,4 @@ resource "azurerm_app_service" "test" {
     scm_type                 = "LocalGit"
   }
 
-  app_settings {
-    "SOME_KEY" = "some-value"
-  }
-
-  connection_string {
-    name  = "Database"
-    type  = "SQLServer"
-    value = "Server=some-server.mydomain.com;Integrated Security=SSPI"
-  }
 }
